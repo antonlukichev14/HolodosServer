@@ -1,12 +1,16 @@
-﻿using System;
-
-namespace HolodosServer
+﻿namespace HolodosServer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Database database = new Database();
+            LogIn logIn = new LogIn();
+            User user = new User(14, "Ivan", "12345", "ivangay", false, false);
+            logIn.CreateNewUser(user);
+
+
+
         }
     }
 }
