@@ -12,15 +12,17 @@ namespace HolodosServer
     public class User
     {
         public uint Id { get; }
-        public string Name;
+        public string Login;
         public string Password;
+        public string Name;
         public bool IsAdmin;
         public bool IsVip;
         public User() { }
-        public User(uint _Id, string _Name, string _Password, bool _IsAdmin, bool _IsVip)
+        public User(uint _Id, string _Login, string _Password, string _Name, bool _IsAdmin, bool _IsVip)
         {
             Id = _Id;
             Name = _Name;
+            Login = _Login;
             Password = _Password;
             IsAdmin = _IsAdmin;
             IsVip = _IsVip;
