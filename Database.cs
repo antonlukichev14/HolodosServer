@@ -8,5 +8,6 @@ namespace HolodosServer
 {
     class Database
     {
+
     }
 }
