@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace HolodosServer
+﻿namespace HolodosServer
 {
     public class User
     {
@@ -18,7 +9,7 @@ namespace HolodosServer
         public bool IsAdmin;
         public bool IsVip;
         public User() { }
-        public User(uint _Id, string _Login, string _Password, string _Name, bool _IsAdmin, bool _IsVip)
+        public User(uint _Id, string _Name, string _Login, string _Password, bool _IsVip, bool _IsAdmin)
         {
             Id = _Id;
             Name = _Name;
