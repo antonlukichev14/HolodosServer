@@ -7,7 +7,7 @@ namespace HolodosServer
     {
 
 
-        Database database = new Database(Path.Combine(Environment.CurrentDirectory, @"C:\Users\Roman\Desktop\HolodosServer\UserData.txt"));
+        Database database = new Database(Path.Combine(Environment.CurrentDirectory, "UserData.txt"));
         public bool LogInProfile(string login, string password)
         {
             bool isLogIn = false;
@@ -32,7 +32,7 @@ namespace HolodosServer
             if (!LogInProfile(user.Login, user.Password))
             {
                 string writeString = $"{user.Id} {user.Name} {user.Login} {user.Password} {user.IsVip} {user.IsAdmin}";
-                using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.CurrentDirectory, @"C:\Users\Roman\Desktop\HolodosServer\UserData.txt"), true))
+                using (StreamWriter writer = new StreamWriter(Path.Combine(Environment.CurrentDirectory, "UserData.txt"), true))
                 {
                     writer.WriteLine(writeString);
                     isCreated = true;
