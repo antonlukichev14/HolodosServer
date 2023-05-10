@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HolodosServer
 {
@@ -14,7 +15,21 @@ namespace HolodosServer
         //P.S. бывший Database.cs
         static class DatabaseUsers
         {
+            static string filePath = Path.Combine(Environment.CurrentDirectory, "UserData.txt");
 
+            public static string[] GetString()
+            {
+                return File.ReadAllLines(filePath);
+            }
+
+            public static void Add(User user)
+            {
+                string writeString = $"{user.Id} {user.Name} {user.Login} {user.Password} {user.IsVip} {user.IsAdmin}";
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine(writeString);
+                }
+            }
         }
     }
 }

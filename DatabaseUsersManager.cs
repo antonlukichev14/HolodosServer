@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HolodosServer.Database;
 
 namespace HolodosServer
 {
@@ -13,12 +14,31 @@ namespace HolodosServer
     {
         public static bool LogInProfile(string login, string password)
         {
-            return true;
+            string[] lines = DatabaseUsers.GetString();
+            bool isLogIn = false;
+            for (int i = 0; i < lines.Length; i++)
+            {
+
+                string[] tempAr = lines[i].Split(' ');
+                if (tempAr[2] == login)
+                {
+                    if (tempAr[3] == password)
+                    {
+                        isLogIn = true;
+                    }
+                }
+            }
+            return isLogIn;
         }
 
         public static bool CreateNewUser(User user)
         {
-            return true;
+            if (!LogInProfile(user.Login, user.Password))
+            {
+                DatabaseUsers.Add(user);
+                return true;
+            }
+            return false;
         }
     }
 }
