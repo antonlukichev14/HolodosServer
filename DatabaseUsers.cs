@@ -19,7 +19,7 @@ namespace HolodosServer
 
             public static string[] GetString()
             {
-                return File.ReadAllLines(filePath);
+                return File.ReadAllLines(filePath); //Если здесь возникла ошибка, значит надо перенести файл с базой данных (UserData.txt) в (папка с кодом)\bin\Debug\net5.0\
             }
 
             public static void Add(User user)
