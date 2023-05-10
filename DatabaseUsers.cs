@@ -15,20 +15,38 @@ namespace HolodosServer
         //P.S. бывший Database.cs
         static class DatabaseUsers
         {
-            static string filePath = Path.Combine(Environment.CurrentDirectory, "UserData.txt");
+            static string filePath = Path.Combine(Environment.CurrentDirectory, "data/UserData.txt");
 
             public static string[] GetString()
             {
-                return File.ReadAllLines(filePath); //Если здесь возникла ошибка, значит надо перенести файл с базой данных (UserData.txt) в (папка с кодом)\bin\Debug\net5.0\
+                if(File.Exists(filePath)) return File.ReadAllLines(filePath);
+                return null;
             }
 
-            public static void Add(User user)
+            public static void Add(string name, string login, string password)
             {
-                string writeString = $"{user.Id} {user.Name} {user.Login} {user.Password} {user.IsVip} {user.IsAdmin}";
+                string writeString = $"{name} {login} {password} {0} {0}";
+
+                if (!File.Exists(filePath))
+                {
+                    File.Create(filePath);
+                }
+
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
                     writer.WriteLine(writeString);
                 }
+            }
+
+            public static void DatabaseCheck()
+            {
+                if (!File.Exists(filePath))
+                {
+                    File.Create(filePath);
+                    Console.WriteLine("База данных пользователей создана");
+                    return;
+                }
+                Console.WriteLine("База данных пользователей найдена");
             }
         }
     }

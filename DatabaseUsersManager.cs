@@ -12,7 +12,7 @@ namespace HolodosServer
     //P.S. бывший Login.cs
     static class DatabaseUsersManager
     {
-        public static bool LogInProfile(string login, string password)
+        public static bool UserEnter(string login, string password)
         {
             string[] lines = DatabaseUsers.GetString();
             bool isLogIn = false;
@@ -31,11 +31,17 @@ namespace HolodosServer
             return isLogIn;
         }
 
-        public static bool CreateNewUser(User user)
+        public static bool UserLoginCheck(string login)
         {
-            if (!LogInProfile(user.Login, user.Password))
+            //Проверяет есть ли пользователь с таким логином
+            return false;
+        }
+
+        public static bool CreateNewUser(string name, string login, string password)
+        {
+            if (!UserLoginCheck(login))
             {
-                DatabaseUsers.Add(user);
+                DatabaseUsers.Add(name, login, password);
                 return true;
             }
             return false;

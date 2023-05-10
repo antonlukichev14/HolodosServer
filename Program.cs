@@ -6,8 +6,9 @@ namespace HolodosServer
     {
         static void Main(string[] args)
         {
-            User user = new User(3, "Ban", "Darkcolm", "gachi", true, true);
-            Console.WriteLine(DatabaseUsersManager.CreateNewUser(user));
+            Database.DatabaseUsers.DatabaseCheck();
+
+            Console.WriteLine(DatabaseUsersManager.CreateNewUser("Ban", "Darkcolm", "gachi"));
         }
     }
 }
