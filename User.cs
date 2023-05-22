@@ -12,13 +12,20 @@ namespace HolodosServer
     public class User
     {
         public uint Id { get; }
+        public string Name;
         public string Login;
         public string Password;
-        public string Name;
         public bool IsAdmin;
         public bool IsVip;
         public User() { }
-        public User(uint _Id, string _Login, string _Password, string _Name, bool _IsAdmin, bool _IsVip)
+
+        public User(string _Name, string _Login, string _Password)
+        {
+            Login = _Login;
+            Password = _Password;
+            Name = _Name;
+        }
+        public User(uint _Id, string _Name, string _Login, string _Password, bool _IsAdmin, bool _IsVip)
         {
             Id = _Id;
             Name = _Name;
@@ -27,5 +34,6 @@ namespace HolodosServer
             IsAdmin = _IsAdmin;
             IsVip = _IsVip;
         }
+        
     }
 }
