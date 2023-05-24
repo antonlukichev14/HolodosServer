@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HolodosServer
 {
@@ -11,7 +8,7 @@ namespace HolodosServer
         List<(User, DateTime)> currentUsers = new List<(User, DateTime)>();
         bool LogIn(string UserLogin, string UserPassword)
         {
-            if (DatabaseUsersManager.LogInProfile(UserLogin, UserPassword))
+            if (DatabaseUsersManager.UserEnter(UserLogin, UserPassword))
             {
                 currentUsers.Add((DatabaseUsersManager.UserLoginCheck(UserLogin), DateTime.UtcNow));
                 Console.WriteLine("Вы успешно авторизовались");
@@ -26,7 +23,7 @@ namespace HolodosServer
 
         }
 
-        bool Registration(string UserName,string UserLogin, string UserPassword)
+        bool Registration(string UserName, string UserLogin, string UserPassword)
         {
             if (DatabaseUsersManager.UserLoginCheck(UserLogin) == null)
             {
@@ -39,7 +36,7 @@ namespace HolodosServer
                 Console.WriteLine("Пользователь с таким login уже существует, попробуйте другой");
                 return false;
             }
-            
+
         }
 
     }

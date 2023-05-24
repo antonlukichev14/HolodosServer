@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HolodosServer.Database;
+﻿using HolodosServer.Database;
 
 namespace HolodosServer
 {
@@ -43,7 +38,25 @@ namespace HolodosServer
         public static User UserLoginCheck(string login) // тут должна быть функция которая сопоставляет логин и/или пароль с экземпляром User
         {
             User user = null;
+            string[] strings = DatabaseUsers.GetString();
+
+
+            for (int i = 1; i < strings.Length; i++)
+            {
+                string[] temp = strings[i].Split(' ');
+                if (temp[2] == login)
+                {
+                    user = new User();
+                    break;
+                }
+            }
             return user;
+
+
+
+
+
+
         }
 
     }
