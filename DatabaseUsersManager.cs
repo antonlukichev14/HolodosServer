@@ -45,5 +45,10 @@ namespace HolodosServer
             }
             return false;
         }
+        public static User UserLoginCheck(string login) // тут должна быть функция которая сопоставляет логин и/или пароль с экземпляром User
+        {
+            return user;
+        }
+
     }
 }
