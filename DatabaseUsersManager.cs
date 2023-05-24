@@ -33,7 +33,7 @@ namespace HolodosServer
 
         public static bool CreateNewUser(string name, string login, string password)
         {
-            if (!UserLoginCheck(login))
+            if (UserLoginCheck(login) == null)
             {
                 DatabaseUsers.Add(name, login, password);
                 return true;
