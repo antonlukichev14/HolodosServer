@@ -28,36 +28,29 @@ namespace HolodosServer
 
         public static bool CreateNewUser(string name, string login, string password)
         {
-            if (UserLoginCheck(login) == null)
+            if (UserLoginCheck(login))
             {
                 DatabaseUsers.Add(name, login, password);
                 return true;
             }
             return false;
         }
-        public static User UserLoginCheck(string login) // тут должна быть функция которая сопоставляет логин и/или пароль с экземпляром User
-        {
-            User user = null;
-            string[] strings = DatabaseUsers.GetString();
 
+        public static bool UserLoginCheck(string login) // тут функция которая сопоставляет логин c базой данных
+        {
+            bool a = false;
+            string[] strings = DatabaseUsers.GetString();
 
             for (int i = 1; i < strings.Length; i++)
             {
                 string[] temp = strings[i].Split(' ');
                 if (temp[2] == login)
                 {
-                    user = new User();
+                    a = true;
                     break;
                 }
             }
-            return user;
-
-
-
-
-
-
+            return a;
         }
-
     }
 }
