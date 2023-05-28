@@ -29,6 +29,7 @@ namespace HolodosServer
             {
                 User user = new User(UserName, UserLogin, UserPassword);
                 Console.WriteLine("Вы успешно зарегистрировались");
+                LogIn(UserLogin, UserPassword);
                 return true;
             }
             else
@@ -36,6 +37,10 @@ namespace HolodosServer
                 Console.WriteLine("Пользователь с таким login уже существует, попробуйте другой");
                 return false;
             }
+
+        }
+        void FreezerBooking(string UserLogin, Booking UserBooking)
+        {
 
         }
 
