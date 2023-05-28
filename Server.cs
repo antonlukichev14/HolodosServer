@@ -11,16 +11,18 @@ namespace HolodosServer
         List<(User, DateTime)> currentUsers = new List<(User, DateTime)>();
         bool LogIn(string UserLogin, string UserPassword)
         {
-            if (DatabaseUsersManager.LogInProfile(UserLogin, UserPassword))
+            User currentUser = DatabaseUsersManager.UserEnter(UserLogin, UserPassword);
+
+            if (currentUser != null)
             {
-                currentUsers.Add((DatabaseUsersManager.UserLoginCheck(UserLogin), DateTime.UtcNow));
-                Console.WriteLine("Вы успешно авторизовались");
+                currentUsers.Add((currentUser, DateTime.UtcNow));
+                Console.WriteLine("Пользователь {0} авторизовался", currentUser.Login);
                 return true;
             }
             else
             {
                 // вывод оповещения о неверно введенных данных
-                Console.WriteLine("Произошла ошибка, проверьте корректность введеных данных");
+                Console.WriteLine("Попытка входа с неверно введёнными данными");
                 return false;
             }
 
@@ -28,20 +30,20 @@ namespace HolodosServer
 
         bool Registration(string UserName,string UserLogin, string UserPassword)
         {
-            if (DatabaseUsersManager.UserLoginCheck(UserLogin) == null)
+            if (DatabaseUsersManager.UserLoginCheck(UserLogin))
             {
-                User user = new User(UserName, UserLogin, UserPassword);
-                Console.WriteLine("Вы успешно зарегистрировались");
-                LogIn(UserLogin, UserPassword);
+                Console.WriteLine("Регистрация нового пользователя {0}", UserName);
+                DatabaseUsersManager.CreateNewUser(UserName, UserLogin, UserPassword);
                 return true;
             }
             else
             {
-                Console.WriteLine("Пользователь с таким login уже существует, попробуйте другой");
+                Console.WriteLine("Попытка регистрации с занятым логином");
                 return false;
             }
             
         }
+
         void FreezerBooking(string UserLogin, Booking UserBooking)
         {
 
