@@ -52,5 +52,10 @@ namespace HolodosServer
             }
             return a;
         }
+
+        public static User GetUser(string login) //функция ищет пользователя с указанным логином и возвращает экземпляр User с данными из базы данных
+        {
+            return new User();
+        }
     }
 }
