@@ -7,8 +7,10 @@ namespace HolodosServer
     //P.S. бывший Login.cs
     static class DatabaseUsersManager
     {
-        public static bool UserEnter(string login, string password)
+        public static User UserEnter(string login, string password)
         {
+            User user = null;
+
             string[] lines = DatabaseUsers.GetString();
             bool isLogIn = false;
             for (int i = 0; i < lines.Length; i++)
@@ -19,11 +21,11 @@ namespace HolodosServer
                 {
                     if (tempAr[3] == password)
                     {
-                        isLogIn = true;
+                        user = new User(); //Перенести все данные из базы данных
                     }
                 }
             }
-            return isLogIn;
+            return user;
         }
 
         public static bool CreateNewUser(string name, string login, string password)
