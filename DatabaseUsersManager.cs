@@ -13,7 +13,7 @@ namespace HolodosServer
 
             string[] lines = DatabaseUsers.GetString();
             bool isLogIn = false;
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
             {
 
                 string[] tempAr = lines[i].Split(' ');
@@ -21,7 +21,8 @@ namespace HolodosServer
                 {
                     if (tempAr[3] == password)
                     {
-                        user = new User(); //Перенести все данные из базы данных
+                        user = new User(tempAr[1], tempAr[2], tempAr[3]); //Перенести все данные из базы данных
+
                     }
                 }
             }
