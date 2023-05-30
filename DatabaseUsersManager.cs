@@ -21,7 +21,7 @@ namespace HolodosServer
                 {
                     if (tempAr[3] == password)
                     {
-                        user = new User(tempAr[1], tempAr[2], tempAr[3]); //Перенести все данные из базы данных
+                        user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
 
                     }
                 }
@@ -58,7 +58,20 @@ namespace HolodosServer
 
         public static User GetUser(string login) //функция ищет пользователя с указанным логином и возвращает экземпляр User с данными из базы данных
         {
-            return new User();
+            string[] lines = DatabaseUsers.GetString();
+            User user = null;
+            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            {
+
+                string[] tempAr = lines[i].Split(' ');
+                if (tempAr[2] == login)
+                {
+                    user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
+
+
+                }
+            }
+            return user;
         }
     }
 }
