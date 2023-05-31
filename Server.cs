@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace HolodosServer
 
         }
 
-        bool Registration(string UserName,string UserLogin, string UserPassword)
+        bool Registration(string UserName, string UserLogin, string UserPassword)
         {
             if (DatabaseUsersManager.UserLoginCheck(UserLogin))
             {
@@ -41,14 +42,13 @@ namespace HolodosServer
                 Console.WriteLine("ѕопытка регистрации с зан€тым логином");
                 return false;
             }
-            
+
         }
 
         void FreezerBooking(string UserLogin, Booking UserBooking)
         {
 
         }
-
     }
 
 }
