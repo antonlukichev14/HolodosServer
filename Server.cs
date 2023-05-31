@@ -49,18 +49,6 @@ namespace HolodosServer
         {
 
         }
-
-        public Booking[] WeekRec()
-        {
-            // функция получения всех записей на неделю, в виде массива
-            Booking[] OnWeek = new Booking[] {}
-            return OnWeek;
-        }
-
-        public void BookingInBase (Booking OneRec)
-        {
-            // функция внесения бронироваания в базу данных
-        }
     }
 
 }
