@@ -6,10 +6,7 @@ namespace HolodosServer
     {
         static void Main(string[] args)
         {
-            User user = DatabaseUsersManager.UserEnter("victor3", "rapo3");
-            Console.WriteLine(user.Name);
-
-
+            Server.Registration("Anthony", "antoxa124", "RomaPIDR");
         }
     }
 }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace HolodosServer
 {
-    public class Server
+    public static class Server
     {
-        List<(User, DateTime)> currentUsers = new List<(User, DateTime)>();
-        bool LogIn(string UserLogin, string UserPassword)
+        static List<(User, DateTime)> currentUsers = new List<(User, DateTime)>();
+        public static bool LogIn(string UserLogin, string UserPassword)
         {
             User currentUser = DatabaseUsersManager.UserEnter(UserLogin, UserPassword);
 
@@ -29,11 +29,11 @@ namespace HolodosServer
 
         }
 
-        bool Registration(string UserName, string UserLogin, string UserPassword)
+        public static bool Registration(string UserName, string UserLogin, string UserPassword)
         {
-            if (DatabaseUsersManager.UserLoginCheck(UserLogin))
+            if (!DatabaseUsersManager.UserLoginCheck(UserLogin))
             {
-                Console.WriteLine("Регистрация нового пользователя {0}", UserName);
+                Console.WriteLine("Регистрация нового пользователя {0}", UserLogin);
                 DatabaseUsersManager.CreateNewUser(UserName, UserLogin, UserPassword);
                 return true;
             }
@@ -45,7 +45,7 @@ namespace HolodosServer
 
         }
 
-        void FreezerBooking(string UserLogin, Booking UserBooking)
+        public static void FreezerBooking(string UserLogin, Booking UserBooking)
         {
 
         }

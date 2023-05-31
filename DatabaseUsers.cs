@@ -25,7 +25,7 @@ namespace HolodosServer
 
             public static void Add(string name, string login, string password)
             {
-                string writeString = $"{name} {login} {password} {0} {0}";
+                string writeString = $"\n{name} {login} {password} {0} {0}";
 
                 if (!File.Exists(filePath))
                 {
@@ -34,7 +34,7 @@ namespace HolodosServer
 
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    writer.WriteLine(writeString);
+                    writer.Write(writeString);
                 }
             }
 

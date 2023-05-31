@@ -31,7 +31,7 @@ namespace HolodosServer
 
         public static bool CreateNewUser(string name, string login, string password)
         {
-            if (UserLoginCheck(login))
+            if (!UserLoginCheck(login))
             {
                 DatabaseUsers.Add(name, login, password);
                 return true;
@@ -46,8 +46,10 @@ namespace HolodosServer
 
             for (int i = 1; i < strings.Length; i++)
             {
+                if (string.IsNullOrWhiteSpace(strings[i])) break;
+
                 string[] temp = strings[i].Split(' ');
-                if (temp[2] == login)
+                if (temp[1] == login)
                 {
                     a = true;
                     break;
