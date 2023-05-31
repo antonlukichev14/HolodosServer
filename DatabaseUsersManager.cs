@@ -7,6 +7,7 @@ namespace HolodosServer
     //P.S. бывший Login.cs
     static class DatabaseUsersManager
     {
+
         public static User UserEnter(string login, string password)
         {
             User user = null;

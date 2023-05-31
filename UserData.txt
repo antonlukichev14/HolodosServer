@@ -1,4 +1,0 @@
-ID Name Login Password Vip Admin
-1 Ben kolyane1 paw1 false false
-2 Victor victor3 rapo3 false false
-3 Ban Darkcolm gachi True True

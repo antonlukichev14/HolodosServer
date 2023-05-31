@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace HolodosServer
@@ -19,7 +15,7 @@ namespace HolodosServer
 
             public static string[] GetString()
             {
-                if(File.Exists(filePath)) return File.ReadAllLines(filePath);
+                if (File.Exists(filePath)) return File.ReadAllLines(filePath);
                 return null;
             }
 

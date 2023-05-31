@@ -1,8 +1,0 @@
-ID      Name   Volume   Color TemperatureRetentionTime ReadyForBooking  BookingPrice                            
-1    CooLerBag    20    Black           7                  13                40      
-2    Arctic2000   25    White           8                  17                50    
-3    Icebox       15    Blue            10                 2                 30
-4    Syberia      30    Green           12                 7                 65  
-5    SnowBag      17    White           5                  20                20
-6    Omsk         13    Yellow          6                  4                 25
-7    Alyaska60C   16    Black           8                  10                40
