@@ -12,6 +12,9 @@ namespace HolodosServer
         public DateTime DateStart;
         public DateTime DateFinish;
 
+
+
+
         public Booking() { }
 
         public Booking(uint _BookingId, uint _CityId, uint _PlaceId, uint _UserId, byte _FType, DateTime _DateStart, DateTime _DateFinish)
@@ -23,6 +26,7 @@ namespace HolodosServer
             FType = _FType;
             DateStart = _DateStart;
             DateFinish = _DateFinish;
+
         }
     }
 }
