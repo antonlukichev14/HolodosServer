@@ -45,7 +45,7 @@ namespace HolodosServer
 
         }
 
-        byte FreezerBooking(string UserLogin, Booking UserBooking)
+        public static byte FreezerBooking(string UserLogin, Booking UserBooking)
         {
             Booking[] DayBooking = new Booking[]; DayBooking = DatabaseBookingManager.DayRec(UserBooking.CityId, UserBooking.PlaceId, UserBooking.Date);
             Booking[] WeekBooking = new Booking[]; WeekBooking = DatabaseBookingManager.WeekRec();
