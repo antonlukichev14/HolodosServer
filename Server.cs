@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace HolodosServer
 
         }
 
-        bool Registration(string UserName,string UserLogin, string UserPassword)
+        bool Registration(string UserName, string UserLogin, string UserPassword)
         {
             if (DatabaseUsersManager.UserLoginCheck(UserLogin))
             {
@@ -41,7 +42,7 @@ namespace HolodosServer
                 Console.WriteLine("Попытка регистрации с занятым логином");
                 return false;
             }
-            
+
         }
 
         void FreezerBooking(string UserLogin, Booking UserBooking)
@@ -49,6 +50,17 @@ namespace HolodosServer
 
         }
 
+        public Booking[] WeekRec()
+        {
+            // функция получения всех записей на неделю, в виде массива
+            Booking[] OnWeek = new Booking[] {}
+            return OnWeek;
+        }
+
+        public void BookingInBase (Booking OneRec)
+        {
+            // функция внесения бронироваания в базу данных
+        }
     }
 
 }
