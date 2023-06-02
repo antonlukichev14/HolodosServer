@@ -47,42 +47,42 @@ namespace HolodosServer
 
         public static byte FreezerBooking(string UserLogin, Booking UserBooking)
         {
-            Booking[] DayBooking = new Booking[]; DayBooking = DatabaseBookingManager.DayRec(UserBooking.CityId, UserBooking.PlaceId, UserBooking.Date);
-            Booking[] WeekBooking = new Booking[]; WeekBooking = DatabaseBookingManager.WeekRec();
-            User Actuall = new User(); Actuall = DatabaseUsersManager.GetUser(UserLogin);
+            Booking[] DayBooking =  DatabaseBookingManager.DayRec(UserBooking.CityId, UserBooking.PlaceId, UserBooking.Date);
+            Booking[] WeekBooking =  DatabaseBookingManager.WeekRec();
+            User Actuall = DatabaseUsersManager.GetUser(UserLogin);
 
             if (currentUsers.Exists(x => x.Item1 == Actuall) == false)
             {
-                Console.WriteLine("Код ошибки 0; Пользователь не в currentUsers")
-                return (0)
+                Console.WriteLine("Код ошибки 0; Пользователь не в currentUsers");
+                return 0;
             }
             //проверка на нахождениу пользователя в currentUsers
 
             for(int i = 0; i <= WeekBooking.Length; i++)
             {
-                if (Actuall.IsVip == 0 && Actuall.IsAdmin == 0)
+                if (!Actuall.IsVip && !Actuall.IsAdmin)
                 {
                     if (WeekBooking[i].UserId == Actuall.Id)
                     {
                         Console.WriteLine("Код ошибки 3;Пользователь превышает максимальный лимит записей (1)");
-                        return (3)
+                        return 3;
                     }
                 }
-                if (Actuall.IsVip == 1 && Actuall.IsAdmin == 0 )
+                if (Actuall.IsVip && !Actuall.IsAdmin)
                 {
-                    int k == 0;
+                    int k = 0;
                     if (WeekBooking[i].UserId == Actuall.Id) { k += 1; }
                     if (k >= 3)
                     {
                         Console.WriteLine("Код ошибки 4;Пользователь превышает максимальный лимит записей (3)");
-                        return (4)
+                        return 4;
                     }
                 } 
             }
 
             // проверка на кол-во записей за неделю завершена
 
-            List<int> OccupiedTime = new List<int>
+            List<int> OccupiedTime = new List<int>();
 
             for(int i = 0; i <= DayBooking.Length; i++)
             {
@@ -100,8 +100,8 @@ namespace HolodosServer
                 {
                     if(UserHour == OccupiedTime[j])
                     {
-                        Console.WriteLine("Код ошибки 2; Время уже занято")
-                        return (2);
+                        Console.WriteLine("Код ошибки 2; Время уже занято");
+                        return 2;
                     }
                 }
             }
@@ -109,7 +109,7 @@ namespace HolodosServer
             // проверка на незанятое время завершено
 
             Console.WriteLine("Код исхода 1; Пользователь успешно забронировал холодильник");
-            return (1);
+            return 1;
 
 
         }
