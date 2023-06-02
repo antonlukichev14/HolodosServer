@@ -6,7 +6,7 @@ namespace HolodosServer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Server.Registration("Anthony", "antoxa124", "RomaPIDR");
         }
     }
 }
