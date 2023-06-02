@@ -64,5 +64,12 @@ namespace HolodosServer
 
             // функция внесения бронироваания в базу данных
         }
+
+        public static Booking[] DayRec(uint cityId, uint placeId, int date)
+        {
+            //функция возвращает все записи из опред. места, в виде массива
+            Booking[] OnDay = new Booking[] { };
+            return OnDay;
+        }
     }
 }
