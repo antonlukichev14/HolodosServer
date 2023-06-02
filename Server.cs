@@ -62,7 +62,7 @@ namespace HolodosServer
             {
                 if (!Actuall.IsVip && !Actuall.IsAdmin)
                 {
-                    if (WeekBooking[i].UserId == Actuall.Id)
+                    if (WeekBooking[i].UserId == Actuall.Login)
                     {
                         Console.WriteLine("Код ошибки 3;Пользователь превышает максимальный лимит записей (1)");
                         return 3;
@@ -71,7 +71,7 @@ namespace HolodosServer
                 if (Actuall.IsVip && !Actuall.IsAdmin)
                 {
                     int k = 0;
-                    if (WeekBooking[i].UserId == Actuall.Id) { k += 1; }
+                    if (WeekBooking[i].UserId == Actuall.Login) { k += 1; }
                     if (k >= 3)
                     {
                         Console.WriteLine("Код ошибки 4;Пользователь превышает максимальный лимит записей (3)");
@@ -108,6 +108,7 @@ namespace HolodosServer
 
             // проверка на незанятое время завершено
 
+            DatabaseBookingManager.BookingInBase(UserBooking);
             Console.WriteLine("Код исхода 1; Пользователь успешно забронировал холодильник");
             return 1;
 

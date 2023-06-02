@@ -11,7 +11,7 @@ namespace HolodosServer
         public uint BookingId;
         public uint CityId;
         public uint PlaceId;
-        public uint UserId;
+        public string UserId; //Был ID, стал Login
         public byte FType;
         public int Date;
         public int Time;
@@ -21,7 +21,7 @@ namespace HolodosServer
 
         public Booking() { }
 
-        public Booking(uint _BookingId, uint _CityId, uint _PlaceId, uint _UserId, byte _FType, int _Date, int _Time, int _Hours)
+        public Booking(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, int _Date, int _Time, int _Hours)
         {
             BookingId = _BookingId;
             CityId = _CityId;
