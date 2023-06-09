@@ -8,7 +8,6 @@ namespace HolodosServer
     //Здесь все функции, с которыми придётся работать другим разрабочикам
     static class DatabaseBookingManager
     {
-
         public static List<Booking> DayRec(DateTime dt)
         {
             List<Booking> onDay = new List<Booking>();
@@ -41,26 +40,12 @@ namespace HolodosServer
             }
 
             return onWeek;
-
-
-
-
-
-
-
-
-
-
-
             // функция получения всех записей на неделю, в виде массива
-
         }
 
         public static void BookingInBase(Booking OneRec)
         {
-
             DatabaseBooking.Add(OneRec.BookingId, OneRec.CityId, OneRec.PlaceId, OneRec.UserId, OneRec.FType, OneRec.DateStart, OneRec.DateFinish);
-
 
             // функция внесения бронироваания в базу данных
         }
