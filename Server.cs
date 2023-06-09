@@ -48,7 +48,7 @@ namespace HolodosServer
         public static byte FreezerBooking(string UserLogin, Booking UserBooking)
         {
             Booking[] DayBooking =  DatabaseBookingManager.DayRec(UserBooking.CityId, UserBooking.PlaceId, UserBooking.Date);
-            Booking[] WeekBooking =  DatabaseBookingManager.WeekRec();
+            Booking[] WeekBooking =  DatabaseBookingManager.WeekRec(UserBooking.Date);
             User Actuall = DatabaseUsersManager.GetUser(UserLogin);
 
             if (currentUsers.Exists(x => x.Item1 == Actuall) == false)
@@ -88,14 +88,14 @@ namespace HolodosServer
             {
                 for(int j = 0; j <= DayBooking[i].Hours; j++)
                 {
-                    int Hour = DayBooking[i].Time + j;
+                    int Hour = DayBooking[i].Date.TimeOfDay.Hours + j;
                     OccupiedTime.Add(Hour);
                 }
             }
 
             for(int i = 0; i <= UserBooking.Hours; i++)
             {
-                int UserHour = UserBooking.Time + i;
+                int UserHour = UserBooking.Date.TimeOfDay.Hours + i;
                 for(int j = 0; j <= OccupiedTime.Count; j++)
                 {
                     if(UserHour == OccupiedTime[j])

@@ -18,9 +18,9 @@ namespace HolodosServer
                 return null;
             }
 
-            public static void Add(uint _BookingId, uint _CityId, uint _PlaceId, uint _UserId, byte _FType, DateTime _DateStart, DateTime _DateFinish)
+            public static void Add(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, DateTime _Date, int _Hours)
             {
-                string writeString = $"\n{_BookingId} {_CityId} {_PlaceId} {_UserId} {_FType} {_DateStart.ToString("dd.MM.yyyy")} {_DateStart.TimeOfDay} {_DateFinish.ToString("dd.MM.yyyy")} {_DateFinish.TimeOfDay}";
+                string writeString = $"\n{_BookingId} {_CityId} {_PlaceId} {_UserId} {_FType} {_Date.ToString()} {_Hours}";
 
                 if (!File.Exists(filePath))
                 {

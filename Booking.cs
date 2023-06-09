@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HolodosServer
 {
@@ -11,15 +7,14 @@ namespace HolodosServer
         public uint BookingId;
         public uint CityId;
         public uint PlaceId;
-        public string UserId; //Был ID, стал Login
+        public string UserId;
         public byte FType;
-        public int Date;
-        public int Time;
+        public DateTime Date;
         public int Hours;
-        
+
         public Booking() { }
 
-        public Booking(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, int _Date, int _Time, int _Hours)
+        public Booking(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, DateTime _Date, int _Hours)
         {
             BookingId = _BookingId;
             CityId = _CityId;
@@ -27,7 +22,6 @@ namespace HolodosServer
             UserId = _UserId;
             FType = _FType;
             Date = _Date;
-            Time = _Time;
             Hours = _Hours;
         }
     }
