@@ -17,8 +17,6 @@ namespace HolodosServer
         public int Time;
         public int Hours;
         
-
-
         public Booking() { }
 
         public Booking(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, int _Date, int _Time, int _Hours)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HolodosServer.Database;
 
 namespace HolodosServer
 {
@@ -13,22 +9,69 @@ namespace HolodosServer
     {
         public static User UserEnter(string login, string password)
         {
-            return new User();
+            User user = null;
+
+            string[] lines = DatabaseUsers.GetString();
+            bool isLogIn = false;
+            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            {
+
+                string[] tempAr = lines[i].Split(' ');
+                if (tempAr[2] == login)
+                {
+                    if (tempAr[3] == password)
+                    {
+                        user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
+
+                    }
+                }
+            }
+            return user;
         }
 
-        public static bool CreateNewUser(string UserName, string UserLogin, string UserPassword)
+        public static bool CreateNewUser(string name, string login, string password)
         {
-            return true;
+            if (!UserLoginCheck(login))
+            {
+                DatabaseUsers.Add(name, login, password);
+                return true;
+            }
+            return false;
         }
 
-        public static bool UserLoginCheck(string login) // тут функция которая сопоставляет логин с базой данных
+        public static bool UserLoginCheck(string login) // тут функция которая сопоставляет логин c базой данных
         {
-            return true;
+            bool a = false;
+            string[] strings = DatabaseUsers.GetString();
+
+            for (int i = 1; i < strings.Length; i++)
+            {
+                if (string.IsNullOrWhiteSpace(strings[i])) break;
+
+                string[] temp = strings[i].Split(' ');
+                if (temp[1] == login)
+                {
+                    a = true;
+                    break;
+                }
+            }
+            return a;
         }
 
         public static User GetUser(string login) //функция ищет пользователя с указанным логином и возвращает экземпляр User с данными из базы данных
         {
-            return new User();
+            string[] lines = DatabaseUsers.GetString();
+            User user = null;
+            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            {
+
+                string[] tempAr = lines[i].Split(' ');
+                if (tempAr[2] == login)
+                {
+                    user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
+                }
+            }
+            return user;
         }
     }
 }
