@@ -16,7 +16,9 @@ namespace HolodosServer
             for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
             {
                 string[] tempAr = lines[i].Split(' ');
-                Booking tempBooking = new Booking(uint.Parse(tempAr[0]), uint.Parse(tempAr[1]), uint.Parse(tempAr[2]), tempAr[3], byte.Parse(tempAr[4]), DateTime.Parse(tempAr[5]), int.Parse(tempAr[6]));
+                string[] dta = tempAr[5].Split('.');
+                string[] tma = tempAr[6].Split(':');
+                Booking tempBooking = new Booking(uint.Parse(tempAr[0]), uint.Parse(tempAr[1]), uint.Parse(tempAr[2]), tempAr[3], byte.Parse(tempAr[4]), new DateTime(int.Parse(dta[2]), int.Parse(dta[1]), int.Parse(dta[0]), int.Parse(tma[0]), int.Parse(tma[1]), int.Parse(tma[2])), int.Parse(tempAr[7]));
 
                 if (tempBooking.Date.Date == dt.Date && tempBooking.CityId == CityId && tempBooking.PlaceId == PlaceId)
                 {
@@ -34,7 +36,9 @@ namespace HolodosServer
             for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
             {
                 string[] tempAr = lines[i].Split(' ');
-                Booking tempBooking = new Booking(uint.Parse(tempAr[0]), uint.Parse(tempAr[1]), uint.Parse(tempAr[2]), tempAr[3], byte.Parse(tempAr[4]), DateTime.Parse(tempAr[5]), int.Parse(tempAr[6]));
+                string[] dta = tempAr[5].Split('.');
+                string[] tma = tempAr[6].Split(':'); 
+                Booking tempBooking = new Booking(uint.Parse(tempAr[0]), uint.Parse(tempAr[1]), uint.Parse(tempAr[2]), tempAr[3], byte.Parse(tempAr[4]), new DateTime(int.Parse(dta[2]), int.Parse(dta[1]), int.Parse(dta[0]), int.Parse(tma[0]), int.Parse(tma[1]), int.Parse(tma[2])), int.Parse(tempAr[7]));
 
                 if (tempBooking.Date.Date == dt.Date)
                 {

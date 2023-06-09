@@ -70,9 +70,11 @@ namespace HolodosServer
             {
 
                 string[] tempAr = lines[i].Split(' ');
-                if (tempAr[2] == login)
+                if (tempAr[1] == login)
                 {
-                    user = new User(tempAr[0], tempAr[1], tempAr[2], bool.Parse(tempAr[3]), bool.Parse(tempAr[4])); //Перенести все данные из базы данных
+                    bool isA = (int.Parse(tempAr[3]) == 1) ? true : false;
+                    bool isV = (int.Parse(tempAr[4]) == 1) ? true : false;
+                    user = new User(tempAr[0], tempAr[1], tempAr[2], isA, isV); //Перенести все данные из базы данных
                 }
             }
             return user;

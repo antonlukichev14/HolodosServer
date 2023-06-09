@@ -23,7 +23,7 @@ namespace HolodosServer
             {
                 uint _BookingId = currentID;
                 currentID++;
-                string writeString = $"\n{_BookingId} {_CityId} {_PlaceId} {_UserId} {_FType} {_Date.ToString()} {_Hours}";
+                string writeString = $"{_BookingId} {_CityId} {_PlaceId} {_UserId} {_FType} {_Date.ToString()} {_Hours}\n";
 
                 if (!File.Exists(filePath))
                 {

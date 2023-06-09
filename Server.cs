@@ -52,20 +52,25 @@ namespace HolodosServer
             Booking[] WeekBooking =  DatabaseBookingManager.WeekRec(UserBooking.Date);
             User Actuall = DatabaseUsersManager.GetUser(UserLogin);
 
-            if (currentUsers.Exists(x => x.Item1 == Actuall) == false)
+            bool a = false;
+            foreach((User, DateTime) _user in currentUsers)
             {
-                Console.WriteLine("Код ошибки 0; Пользователь не в currentUsers");
+                if (_user.Item1.Login == UserLogin) a = true;
+            }
+            if(!a)
+            {
+                Console.WriteLine("Код ошибки 0; Пользователя нет в списке currentUsers");
                 return 0;
             }
             //проверка на нахождениу пользователя в currentUsers
 
-            for(int i = 0; i <= WeekBooking.Length; i++)
+            for(int i = 0; i < WeekBooking.Length; i++)
             {
                 if (!Actuall.IsVip && !Actuall.IsAdmin)
                 {
                     if (WeekBooking[i].UserId == Actuall.Login)
                     {
-                        Console.WriteLine("Код ошибки 3;Пользователь превышает максимальный лимит записей (1)");
+                        Console.WriteLine("Код ошибки 3; Пользователь превышает максимальный лимит записей (1)");
                         return 3;
                     }
                 }
@@ -75,7 +80,7 @@ namespace HolodosServer
                     if (WeekBooking[i].UserId == Actuall.Login) { k += 1; }
                     if (k >= 3)
                     {
-                        Console.WriteLine("Код ошибки 4;Пользователь превышает максимальный лимит записей (3)");
+                        Console.WriteLine("Код ошибки 4; Пользователь превышает максимальный лимит записей (3)");
                         return 4;
                     }
                 } 
@@ -85,19 +90,19 @@ namespace HolodosServer
 
             List<int> OccupiedTime = new List<int>();
 
-            for(int i = 0; i <= DayBooking.Length; i++)
+            for(int i = 0; i < DayBooking.Length; i++)
             {
-                for(int j = 0; j <= DayBooking[i].Hours; j++)
+                for(int j = 0; j < DayBooking[i].Hours; j++)
                 {
                     int Hour = DayBooking[i].Date.TimeOfDay.Hours + j;
                     OccupiedTime.Add(Hour);
                 }
             }
 
-            for(int i = 0; i <= UserBooking.Hours; i++)
+            for(int i = 0; i < UserBooking.Hours; i++)
             {
                 int UserHour = UserBooking.Date.TimeOfDay.Hours + i;
-                for(int j = 0; j <= OccupiedTime.Count; j++)
+                for(int j = 0; j < OccupiedTime.Count; j++)
                 {
                     if(UserHour == OccupiedTime[j])
                     {
