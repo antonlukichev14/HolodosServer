@@ -13,16 +13,20 @@ namespace HolodosServer
 
             string[] lines = DatabaseUsers.GetString();
             bool isLogIn = false;
-            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+
+            if (lines == null) return null;
+
+            for (int i = 0; i < lines.Length; i++)
             {
 
                 string[] tempAr = lines[i].Split(' ');
-                if (tempAr[2] == login)
+                if (tempAr[1] == login)
                 {
-                    if (tempAr[3] == password)
+                    if (tempAr[2] == password)
                     {
-                        user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
-
+                        bool isA = (int.Parse(tempAr[3]) == 1) ? true : false;
+                        bool isV = (int.Parse(tempAr[4]) == 1) ? true : false;
+                        user = new User(tempAr[0], tempAr[1], tempAr[2], isA, isV); //Перенести все данные из базы данных
                     }
                 }
             }
@@ -68,7 +72,7 @@ namespace HolodosServer
                 string[] tempAr = lines[i].Split(' ');
                 if (tempAr[2] == login)
                 {
-                    user = new User(uint.Parse(tempAr[0]), tempAr[1], tempAr[2], tempAr[3], bool.Parse(tempAr[4]), bool.Parse(tempAr[5])); //Перенести все данные из базы данных
+                    user = new User(tempAr[0], tempAr[1], tempAr[2], bool.Parse(tempAr[3]), bool.Parse(tempAr[4])); //Перенести все данные из базы данных
                 }
             }
             return user;

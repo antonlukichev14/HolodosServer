@@ -10,6 +10,7 @@ namespace HolodosServer
     public static class Server
     {
         static List<(User, DateTime)> currentUsers = new List<(User, DateTime)>();
+
         public static bool LogIn(string UserLogin, string UserPassword)
         {
             User currentUser = DatabaseUsersManager.UserEnter(UserLogin, UserPassword);
@@ -31,7 +32,7 @@ namespace HolodosServer
 
         public static bool Registration(string UserName, string UserLogin, string UserPassword)
         {
-            if (DatabaseUsersManager.UserLoginCheck(UserLogin))
+            if (!DatabaseUsersManager.UserLoginCheck(UserLogin))
             {
                 Console.WriteLine("Регистрация нового пользователя {0}", UserName);
                 DatabaseUsersManager.CreateNewUser(UserName, UserLogin, UserPassword);

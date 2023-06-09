@@ -70,7 +70,7 @@ namespace HolodosServer
 
         public static void BookingInBase(Booking OneRec)
         {
-            DatabaseBooking.Add(OneRec.BookingId, OneRec.CityId, OneRec.PlaceId, OneRec.UserId, OneRec.FType, OneRec.Date, OneRec.Hours);
+            DatabaseBooking.Add(OneRec.CityId, OneRec.PlaceId, OneRec.UserId, OneRec.FType, OneRec.Date, OneRec.Hours);
 
             // функция внесения бронироваания в базу данных
         }

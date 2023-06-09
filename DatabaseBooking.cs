@@ -10,6 +10,7 @@ namespace HolodosServer
         //Скрыт под namespace, поскольку большинству не нужен
         static class DatabaseBooking
         {
+            static uint currentID = 0;
             static string filePath = Path.Combine(Environment.CurrentDirectory, "data/BookingData.txt");
 
             public static string[] GetString()
@@ -18,8 +19,10 @@ namespace HolodosServer
                 return null;
             }
 
-            public static void Add(uint _BookingId, uint _CityId, uint _PlaceId, string _UserId, byte _FType, DateTime _Date, int _Hours)
+            public static void Add(uint _CityId, uint _PlaceId, string _UserId, byte _FType, DateTime _Date, int _Hours)
             {
+                uint _BookingId = currentID;
+                currentID++;
                 string writeString = $"\n{_BookingId} {_CityId} {_PlaceId} {_UserId} {_FType} {_Date.ToString()} {_Hours}";
 
                 if (!File.Exists(filePath))
@@ -42,6 +45,8 @@ namespace HolodosServer
                     return;
                 }
                 Console.WriteLine("База данных бронирования найдена");
+
+               currentID = (uint)File.ReadAllLines(filePath).Length;
             }
         }
     }

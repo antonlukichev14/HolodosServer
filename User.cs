@@ -11,7 +11,6 @@ namespace HolodosServer
 {
     public class User
     {
-        public uint Id { get; }
         public string Name;
         public string Login;
         public string Password;
@@ -25,9 +24,8 @@ namespace HolodosServer
             Password = _Password;
             Name = _Name;
         }
-        public User(uint _Id, string _Name, string _Login, string _Password, bool _IsAdmin, bool _IsVip)
+        public User(string _Name, string _Login, string _Password, bool _IsAdmin, bool _IsVip)
         {
-            Id = _Id;
             Name = _Name;
             Login = _Login;
             Password = _Password;

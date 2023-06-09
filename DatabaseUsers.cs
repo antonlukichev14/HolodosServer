@@ -21,7 +21,7 @@ namespace HolodosServer
 
             public static void Add(string name, string login, string password)
             {
-                string writeString = $"\n{name} {login} {password} {0} {0}";
+                string writeString = $"{name} {login} {password} {0} {0}\n";
 
                 if (!File.Exists(filePath))
                 {
