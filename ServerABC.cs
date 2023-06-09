@@ -81,6 +81,9 @@ namespace HolodosServer
                 //Place
                 case "F":
                     return $"f___{DatabaseCity.GetPlaces(int.Parse(a[1]))}";
+                //Fridge
+                case "G":
+                    return $"g___{DatabaseFridge.GetFridge()}";
             }
 
             return null;
