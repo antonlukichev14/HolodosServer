@@ -14,7 +14,7 @@ namespace HolodosServer
         public static void server()
         {
             const string ip = "127.0.0.1";
-            const int port = 66677;
+            const int port = 666;
 
             var tcpEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
             // IPEndPoint - конечная точка содержащая IP и порт.
