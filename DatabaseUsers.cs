@@ -11,6 +11,7 @@ namespace HolodosServer
         //P.S. бывший Database.cs
         static class DatabaseUsers
         {
+            static string directoryPath = Path.Combine(Environment.CurrentDirectory, "data");
             static string filePath = Path.Combine(Environment.CurrentDirectory, "data/UserData.txt");
 
             public static string[] GetString()
@@ -25,6 +26,7 @@ namespace HolodosServer
 
                 if (!File.Exists(filePath))
                 {
+                    Directory.CreateDirectory(directoryPath);
                     File.Create(filePath);
                 }
 
@@ -38,6 +40,7 @@ namespace HolodosServer
             {
                 if (!File.Exists(filePath))
                 {
+                    Directory.CreateDirectory(directoryPath);
                     File.Create(filePath);
                     Console.WriteLine("База данных пользователей создана");
                     return;
