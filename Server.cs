@@ -52,6 +52,12 @@ namespace HolodosServer
             Booking[] WeekBooking =  DatabaseBookingManager.WeekRec(UserBooking.Date);
             User Actuall = DatabaseUsersManager.GetUser(UserLogin);
 
+            if (Actuall == null)
+            {
+                Console.WriteLine("Код ошибки 0; Пользователь не найден в базе данных");
+                return 0;
+            }
+
             bool a = false;
             foreach((User, DateTime) _user in currentUsers)
             {
