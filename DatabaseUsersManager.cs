@@ -66,7 +66,7 @@ namespace HolodosServer
         {
             string[] lines = DatabaseUsers.GetString();
             User user = null;
-            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            for (int i = 0; i < lines.Length; i++)
             {
 
                 string[] tempAr = lines[i].Split(' ');
