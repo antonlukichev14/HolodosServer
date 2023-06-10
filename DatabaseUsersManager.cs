@@ -48,7 +48,7 @@ namespace HolodosServer
             bool a = false;
             string[] strings = DatabaseUsers.GetString();
 
-            for (int i = 1; i < strings.Length; i++)
+            for (int i = 0; i < strings.Length; i++)
             {
                 if (string.IsNullOrWhiteSpace(strings[i])) break;
 

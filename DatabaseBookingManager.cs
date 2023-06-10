@@ -13,7 +13,7 @@ namespace HolodosServer
             List<Booking> onDay = new List<Booking>();
             string[] lines = DatabaseBooking.GetString();
 
-            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            for (int i = 0; i < lines.Length; i++)
             {
                 string[] tempAr = lines[i].Split(' ');
                 string[] dta = tempAr[5].Split('.');
@@ -33,7 +33,7 @@ namespace HolodosServer
             List<Booking> onDay = new List<Booking>();
             string[] lines = DatabaseBooking.GetString();
 
-            for (int i = 1; i < lines.Length; i++) // с 1 ибо первая строка это названия колонок
+            for (int i = 0; i < lines.Length; i++) 
             {
                 string[] tempAr = lines[i].Split(' ');
                 string[] dta = tempAr[5].Split('.');
