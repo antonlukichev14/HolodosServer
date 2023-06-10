@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace HolodosServer
 {
@@ -44,10 +45,12 @@ namespace HolodosServer
                     size = listener.Receive(buffer);
 
                     data.Append(Encoding.UTF8.GetString(buffer, 0, size));
-
+                    Console.WriteLine(data.ToString());
                     listener.Send(Encoding.UTF8.GetBytes(ent(data.ToString())));
+                    Console.WriteLine(ent(data.ToString()));
+                    data.Clear();
 
-                } while (listener.Available > 0);
+                } while (listener.Connected);
 
                 listener.Shutdown(SocketShutdown.Both);
                 listener.Close();
