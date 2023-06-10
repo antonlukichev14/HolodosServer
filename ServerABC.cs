@@ -47,7 +47,6 @@ namespace HolodosServer
                     data.Append(Encoding.UTF8.GetString(buffer, 0, size));
                     Console.WriteLine(data.ToString());
                     listener.Send(Encoding.UTF8.GetBytes(ent(data.ToString())));
-                    Console.WriteLine(ent(data.ToString()));
                     data.Clear();
 
                 } while (listener.Connected);
